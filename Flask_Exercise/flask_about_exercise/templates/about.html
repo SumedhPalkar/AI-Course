@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+<h2>About Me</h2>
+<p>
+  I am a Software Engineer at LTIMindtree with over 4 years of experience in
+  designing, developing, and supporting enterprise applications. Throughout my
+  career, I have worked across cloud infrastructure and front-end development,
+  gaining experience in building reliable, scalable, and user-friendly
+  solutions. I enjoy solving real-world problems, learning new technologies, and
+  continuously improving my technical skills. Currently, I am expanding my
+  expertise in Python, Flask, FastAPI, and Generative AI to build modern,
+  AI-powered applications. I am passionate about writing clean, maintainable
+  code, collaborating with teams, and delivering high-quality software that
+  creates business value.
+</p>
+
+<h2>My Hobbies</h2>
+<ul>
+  {% for hobby in hobbies %}
+  <li>{{ hobby }}</li>
+  {% else %}
+  <li>No hobby found.</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

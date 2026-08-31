@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block title %}My To-Do List{% endblock %} {% block
+content %}
+<h1>My To-Do List</h1>
+<form action="{{ url_for('add_task') }}" method="POST">
+  <input type="text" name="task" placeholder="New task..." required />
+  <button type="submit">Add</button>
+</form>
+<ul>
+  {% for task in tasks %}
+  <li>
+    <a href="{{ url_for('toggle_task', task_id=loop.index0) }}" class="tickBox">
+      <input
+        type="checkbox"
+        {%
+        if
+        task.completed
+        %}
+        checked
+        {%
+        endif
+        %}
+        onclick="
+          this.parentElement.click();
+          return false;
+        "
+      />
+    </a>
+    {% if task.completed %}
+    <span class="completed"> {{ task.text }} </span>
+    {% else %} {{ task.text }} {% endif %}
+    <a href="{{ url_for('delete_task', task_id=loop.index0) }}">❌</a>
+  </li>
+  {% else %}
+  <li>No tasks yet — add one above!</li>
+  {% endfor %}
+</ul>
+{% if remaining_tasks == 1 %}
+    <h3>1 task left</h3>
+{% else %}
+    <h3>{{ remaining_tasks }} tasks left</h3>
+{% endif %}
+{% endblock %}

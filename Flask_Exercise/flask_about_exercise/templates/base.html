@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{% block title %}Flask App{% endblock %}</title>
+  </head>
+  <body>
+    <nav><a href="/">Home</a> | <a href="/about">About</a></nav>
+    <hr />
+    {% block content %}{% endblock %}
+  </body>
+</html>

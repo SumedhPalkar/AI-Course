@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <!-- {{ title }} is Jinja2 syntax for inserting a Python value into the HTML.  -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <form action="/feedback" method="POST">
+    <div>
+        <input type="text" name="username" placeholder="Your name" />
+    </div>
+    <div>
+        <input type="text" name="comment" placeholder="Your Comment" />
+    </div>
+      <button type="submit">Submit</button>
+    </form>
+    {% if name %}
+    <p>Hello, {{ name }}!</p>
+    {% endif %}
+
+    {% if comment %}
+    <p>{{ comment }}</p>
+    {% endif %}
+  </body>
+</html>
